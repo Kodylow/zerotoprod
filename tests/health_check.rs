@@ -7,7 +7,7 @@ fn spawn_app() -> String {
     // Retrieve OS assigned port
     let port = listener.local_addr().unwrap().port();
 
-    let server = zerotoprod::run("127.0.0.1:0").expect("Failed address binding");
+    let server = zerotoprod::run(listener).expect("Failed address binding");
     // Launch server as background task
     // tokio::spawn returns a handle to the spawned feature
     // don't need it though so drop with _
